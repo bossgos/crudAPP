@@ -31,15 +31,6 @@ def edit(request, id):
     return render(request, 'edit.html', {'student_edit': student_edit})
 
 
-def update(request, id):
-    student_update = StudentData.objects.get(id=id)
-    form = StudentForm(request.POST, instance=student_update)
-    if form.is_valid():
-        form.save()
-        return redirect('display')
-    return render(request, 'edit.html', {'student_update': student_update})
-
-
 def delete(request, id):
     student_delete = StudentData.objects.get(id=id)
     student_delete.delete()
